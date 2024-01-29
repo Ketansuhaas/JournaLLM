@@ -1,3 +1,3 @@
 # JournaLLM
 
-LLM based journal
+LLM based journal.

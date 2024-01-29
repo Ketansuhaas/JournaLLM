@@ -19,6 +19,7 @@ def vectordb_entry():
     db.add_documents(docs)
     db.save_local('faiss_index')
 
+
 def save_into_text_file(file_path,text):
     with open(file_path, 'w') as file:
         file.write(text)
