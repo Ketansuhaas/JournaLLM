@@ -137,11 +137,12 @@ def login_page():
     if un and pw:
         st.session_state['username'] = un
         st.session_state['password'] = pw
-    create_table()
+    
     if st.button("Login"):
         if not st.session_state['username'] or not st.session_state['password']:
             st.error("Both username and password are required.")
         elif authenticate(st.session_state['username'], st.session_state['password']):
+            create_table()
             st.success("Login successful!")
         else:
             st.error("Invalid credentials. Please try again.")
@@ -240,12 +241,19 @@ def entry():
     c1.write("Today's Entry")
     text0 = c1.text_area("Enter text ")
   
-    template = f'''Question: What happened on {date.today().strftime("%B %d, %Y")}? 
+    # template = f'''Question: What happened on {date.today().strftime("%B %d, %Y")}? 
+    # How did I feel on {date.today().strftime("%B %d, %Y")}? 
+    # What were the events that happened on {date.today().strftime("%B %d, %Y")}? 
+    # Describe your day, {date.today().strftime("%B %d, %Y")}. \n Answer: '''
+    text = f""" <|im_start|>system
+         What happened on {date.today().strftime("%B %d, %Y")}? 
     How did I feel on {date.today().strftime("%B %d, %Y")}? 
     What were the events that happened on {date.today().strftime("%B %d, %Y")}? 
-    Describe your day, {date.today().strftime("%B %d, %Y")}. \n Answer: '''
+    Describe your day, {date.today().strftime("%B %d, %Y")}.<|im_end|>
     
-    text = template + text0
+        <|im_start|>user
+        {text0}<|im_end|>"""
+
 
     if c1.button('Pen down') and text:
         save_into_text_file(file_path,text)
