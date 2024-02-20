@@ -16,6 +16,6 @@ JournaLLM is more than an app; it's a companion on your journey of self-discover
 2. Choose a pretrained LLM from [HuggingFace](https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v0.3-GGUF)
 3. In `app.py`, change the model file in `llm = LlamaCpp(model_path=<model path>, n_ctx=2048)`.
 4. In the terminal, type `streamlit run app.py`.
-5. To use GPU, set `model_kwargs={"device": "cpu"}`
+5. To use GPU, set `model_kwargs={"device": "gpu"}`
 
 ![WhatsApp Image 2024-02-10 at 14 38 58_970b5705](https://github.com/Ketansuhaas/JournaLLM/assets/55935983/05852280-1c1a-47b4-9666-a344c6851fc7)
