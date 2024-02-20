@@ -288,13 +288,13 @@ def main():
     elif page == "Signup":
         signup_page()
     elif page == "Journal":
-        if st.session_state.username == "":
+        if 'username' not in st.session_state:
             st.write('Please login to continue.')
         else:
             st.write(f"Logged in as {st.session_state.username}")
             entry()
     elif page == "Advice":
-        if st.session_state.username == "":
+        if 'username' not in st.session_state:
             st.write('Please login to continue.')
         else:
             st.write(f"Logged in as {st.session_state.username}")
